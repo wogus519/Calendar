@@ -34,7 +34,7 @@ public class CalendarActivity extends AppCompatActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_calendar);
 
-		readDate();
+		readDate();//
 		initVar();
 		setListener();
 		callFragment();
