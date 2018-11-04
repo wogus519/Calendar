@@ -34,7 +34,7 @@ public class CalendarActivity extends AppCompatActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_calendar);
 
-		readDate();//
+		readDate();
 		initVar();
 		setListener();
 		callFragment();
@@ -58,7 +58,6 @@ public class CalendarActivity extends AppCompatActivity
 		SharedPreferences sp = getSharedPreferences("calender", MODE_PRIVATE);
 		fragment_no = sp.getInt("mode", 1);
 	}
-
 	public void initVar() {
 		cal = Calendar.getInstance();
 
@@ -81,8 +80,18 @@ public class CalendarActivity extends AppCompatActivity
 
 		NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 		navigationView.setNavigationItemSelectedListener(this);
+		switch (fragment_no){
+			case 1:
+				navigationView.setCheckedItem(R.id.nav_month);
+				break;
+			case 2:
+				navigationView.setCheckedItem(R.id.nav_week);
+				break;
+			case 3:
+				navigationView.setCheckedItem(R.id.nav_day);
+				break;
+		}
 	}
-
 	public void setListener() {
 		viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 			@Override
@@ -145,7 +154,6 @@ public class CalendarActivity extends AppCompatActivity
 			}
 		});
 	}
-
 	public void callFragment() {
 		switch (fragment_no) {
 			case 1:
